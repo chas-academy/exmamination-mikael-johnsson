@@ -18,27 +18,32 @@ incomeButton.addEventListener("click", addIncome);
 expenseButton.addEventListener("click", addExpense);
 
 function addIncome(){
-    console.log("Adding income");
     const inputDesc = descriptionInput.value;
     const inputAmount = parseFloat(amountInput.value);
-    income.push({description: inputDesc, amount: inputAmount, type: "income"});
-    console.log(income);
-    updateBalance();
-    displayIncome();
+    if(isNaN(inputAmount) || inputAmount < 0){
+        alert("Please enter a valid number for the amount.");
+    } else {
+        income.push({description: inputDesc, amount: inputAmount, type: "income"});
+        updateBalance();
+        displayIncome();
+    };
 };
+    
 
 function addExpense(){
-    console.log("Adding expense");
     const inputDesc = descriptionInput.value;
     const inputAmount = parseFloat(amountInput.value);
-    expenses.push({description: inputDesc, amount: inputAmount, type: "expense"});
-    console.log(expenses);
-    updateBalance();
-    displayExpenses();
+    if(isNaN(inputAmount) || inputAmount < 0){
+        alert("Please enter a valid number for the amount.");
+    } else {
+        expenses.push({description: inputDesc, amount: inputAmount, type: "expense"});
+        updateBalance();
+        displayExpenses();
+    }
+    
 };
 
 function updateBalance(){
-    console.log("updating balance");
     let totalIncome = income.reduce((acc, curr) => acc + curr.amount, 0);
     let totalExpenses = expenses.reduce((acc, curr) => acc + curr.amount, 0);
     let balance = totalIncome - totalExpenses;
@@ -47,13 +52,11 @@ function updateBalance(){
 };
 
 function clearFields(){
-    console.log("clearing fields");
     amountInput.value = "";
     descriptionInput.value = "";
 };
 
 function displayIncome(){
-    console.log("displaying income");
     incomeList.innerHTML = "";
     income.forEach(item => {
         const li = document.createElement("li");
@@ -63,7 +66,6 @@ function displayIncome(){
 };
 
 function displayExpenses(){
-    console.log("displaying expenses");
     expenseList.innerHTML = "";
     expenses.forEach(item => {
         const li = document.createElement("li");
