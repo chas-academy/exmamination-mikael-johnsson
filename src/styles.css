@@ -12,14 +12,6 @@ label {
 input, select {
   margin-bottom: 10px;
 }
-#transactionList {
-  margin-top: 1em;
-  list-style: none;
-  padding: 0;
-}
-#transactionList li {
-  margin: 5px 0;
-}
 .income {
   color: green;
 }
