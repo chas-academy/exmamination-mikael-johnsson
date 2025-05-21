@@ -30,7 +30,9 @@ function addIncome(){
     const inputDesc = descriptionInput.value;
     const inputAmount = parseFloat(amountInput.value);
     if(isNaN(inputAmount) || inputAmount < 0){
-        alert("Please enter a valid number for the amount.");
+        alert("Var god skriv in ett giltigt belopp.");
+    } else if(inputDesc.length < 1){
+        alert("Var god skriv en beskrivning.");
     } else {
         income.push({description: inputDesc, amount: inputAmount, type: "income"});
         updateBalance();
@@ -48,13 +50,14 @@ function addExpense(){
     const inputDesc = descriptionInput.value;
     const inputAmount = parseFloat(amountInput.value);
     if(isNaN(inputAmount) || inputAmount < 0){
-        alert("Please enter a valid number for the amount.");
-    } else {
+        alert("Var god skriv in ett giltigt belopp.");
+    } else if(inputDesc.length < 1){
+        alert("Var god skriv en beskrivning.");
+    }else {
         expenses.push({description: inputDesc, amount: inputAmount, type: "expense"});
         updateBalance();
         displayExpenses();
     }
-    
 };
 
 
